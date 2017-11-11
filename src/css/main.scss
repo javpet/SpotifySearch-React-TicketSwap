@@ -1,0 +1,281 @@
+@import "_reset.scss";
+
+// COLORS
+$backgroundColor: #faf9f8;
+$buttonGreen: #00ce5c;
+$activeBlue: #00b6f0;
+$darkGrey: rgba(7, 22, 27, 0.4);
+$lightGrey: rgba(0, 19, 25, 0.1);
+$textDark: rgba(0, 19, 25, 1);
+$textLight: rgba(0, 19, 25, 0.4);
+
+// VALUES
+$margin-tiny: 8px;
+$margin: 16px;
+$margin-medium: 24px;
+$margin-big: 32px;
+
+// MIXINS
+@mixin rectangle {
+	background-color: white;
+	border-radius: 4px;
+}
+
+@mixin transition {
+	transition: all 400ms ease-in;
+}
+
+// FONTS
+@mixin arialBig {
+	font-size: 18px;
+	line-height: 24px;
+}
+
+@mixin arialBold {
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: bold;
+}
+
+@mixin arialTitle {
+	font-size: 24px;
+	line-height: 32px;
+	color: $activeBlue;
+}
+
+// BASE STYLING
+
+body {
+	background-color: $backgroundColor;
+	font-family: "Arial", sans-serif;
+	font-size: 16px;
+}
+
+.main-container {
+	max-width: 65vw;
+	height: 85vh;
+	margin: 0 auto;
+	margin-top: 5vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.search-bar {
+	width: 100%;
+	height: 56px;
+	margin-bottom: $margin;
+	display: flex;
+}
+
+#searchForm {
+	height: 40px;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	input.input-textfield {
+		width: 80%;
+		height: 100%;
+		outline: none;
+		border: none;
+		padding-left: $margin-big + 16px;
+		box-shadow: 0px 1px 1px rgba(0, 19, 25, 0.16);
+		caret-color: $activeBlue;
+		@include rectangle;
+		@include arialBig;
+
+		&::placeholder {
+			color: $textLight;
+		}
+
+		&:focus,
+		&:active {
+			color: black;
+		}
+	}
+
+	.search-button {
+		width: 20%;
+		height: 100%;
+		color: white;
+		background-color: $buttonGreen;
+		border: none;
+		text-align: center;
+		border-radius: 4px;
+		margin-left: 20px;
+		@include arialBold;
+		@include transition;
+
+		&:hover {
+			background-color: darken($buttonGreen, 5%);
+			cursor: pointer;
+		}
+
+		&:active,
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.search-icon {
+		position: absolute;
+		top: 32%;
+		left: 16px;
+		background-image: url(../img/search-icon-light.svg);
+		background-position: center;
+		background-repeat: no-repeat;
+		fill: $darkGrey;
+		width: 18px;
+		height: 18px;
+	}
+}
+
+.search-result {
+	height: 100%;
+	width: calc(80% - 13px);
+	background-color: green;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid $lightGrey;
+	@include rectangle;
+}
+
+.tab-selector {
+	width: 100%;
+	min-height: 70px;
+	padding-left: $margin-big;
+	border-bottom: 1px solid $lightGrey;
+	display: flex;
+	align-items: flex-end;
+
+	li {
+		list-style: none;
+		text-transform: uppercase;
+		color: $textLight;
+		letter-spacing: 1;
+		margin-right: $margin-medium;
+		padding-bottom: 12px;
+
+		&:hover {
+			cursor: pointer;
+			padding-bottom: 8px;
+			border-bottom: 4px solid $lightGrey;
+		}
+	}
+
+	.tab-active,
+	.tab-active:hover {
+		padding-bottom: 8px;
+		font-weight: bold;
+		color: $activeBlue;
+		border-bottom: 4px solid $activeBlue;
+	}
+
+	.tab-active:hover {
+		cursor: default;
+	}
+}
+
+.track-result {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 500px;
+	padding: $margin-big;
+	padding-bottom: 0;
+	overflow: auto;
+
+	.track-container {
+		display: flex;
+		flex-shrink: 0;
+		height: 88px;
+		margin-bottom: $margin-big;
+	}
+
+	.track-artwork {
+		width: 88px;
+		height: 88px;
+		position: relative;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		.artist-cover {
+			background-color: $lightGrey;
+			background-size: contain;
+			height: 100%;
+			width: 100%;
+			border-radius: 100%;
+		}
+
+		.play-icon {
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.play-icon path {
+			fill: white;
+		}
+	}
+
+	.track-artwork-overlay {
+		background-color: $activeBlue;
+		mix-blend-mode: overlay;
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+		opacity: 0;
+		position: absolute;
+		@include transition;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	.track-details {
+		display: flex;
+		flex-direction: column;
+		margin-left: $margin-medium;
+		color: $textLight;
+		justify-content: center;
+		padding: 11px 0 15px 0;
+
+		.track-title {
+			line-height: 1.4;
+			max-width: 500px;
+			margin-bottom: $margin-tiny;
+		}
+
+		.artist-name {
+			@include arialTitle;
+		}
+	}
+}
+
+.load-more {
+	min-height: 70px;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: $textLight;
+	letter-spacing: 1;
+	background-color: white;
+	border: none;
+	border-radius: 0px 0px 4px 4px;
+	border-top: 1px solid $lightGrey;
+	outline: none;
+	@include transition;
+
+	&:hover {
+		color: white;
+		cursor: pointer;
+		background-color: $activeBlue;
+	}
+}

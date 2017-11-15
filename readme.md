@@ -1,5 +1,6 @@
 # Spotify Search
 Simple Spotify Search using the Spotify Web API helper.
+
 !Note currently only returning tracks from the searched artist --> other implementations later
 
 

@@ -7,15 +7,12 @@ Simple Spotify Search using the Spotify Web API helper.
 ## Spotify API
 Because we are using the Spotify API you need a Spotify account. It could be a new free account or your existing account (no extra permissions needed). You can see more details about the API [here](https://developer.spotify.com/web-api/).
 
-I already included a [Spotify web API](https://github.com/JMPerez/spotify-web-api-js) helper so you can easily query for the different types of data you want. Check the [repo](https://github.com/JMPerez/spotify-web-api-js) for more details on how to.
+The [Spotify web API](https://github.com/JMPerez/spotify-web-api-js) helper is already included, so you can easily query for the different types of data you want. Check the [repo](https://github.com/JMPerez/spotify-web-api-js) for more details on how to.
 
 You can import and use the Spotify web API helper by importing it in the JS file like so:
 ```
 import spotifyApi from 'utils/spotify'
 ```
-
-## Setup
-I already created a small boilerplate where you can work with. If you don't have [node/npm](https://nodejs.org/en/) installed yet be sure to do so.
 
 #### Download repository
 You can download the repo to your local machine and follow the next instructions to get everything up and running.

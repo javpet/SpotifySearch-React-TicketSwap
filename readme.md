@@ -14,9 +14,6 @@ You can import and use the Spotify web API helper by importing it in the JS file
 import spotifyApi from 'utils/spotify'
 ```
 
-#### Download repository
-You can download the repo to your local machine and follow the next instructions to get everything up and running.
-
 #### Installing dependencies
 ```
 npm install

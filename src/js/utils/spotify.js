@@ -1,6 +1,6 @@
 import SpotifyApi from 'spotify-web-api-js'
 import Cookies from 'js-cookie'
-import { client_id, callback_url, auth_url } from 'config/spotify'
+import { client_id, callback_url, auth_url } from '../config/spotify'
 
 let access_token = Cookies.get('access_token')
 

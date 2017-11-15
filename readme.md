@@ -1,6 +1,5 @@
 # Spotify Search
-This is my first bigger experiment with React JS, and since I love music I started tinkering around with the Spotify API to search for artists, tracks, etc.
-
+Simple Spotify Search using the Spotify Web API helper.
 !Note currently only returning tracks from the searched artist --> other implementations later
 
 
